@@ -21,17 +21,19 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Force Compatible Gradle Version (8.5)
+        run: |
+          gradle wrapper --gradle-version 8.5
+
       - name: Organize Root Files into Standard Project Structure
         run: |
           mkdir -p src/main/java/com/halloween
           mkdir -p src/main/resources/assets/halloween/sounds
 
-          # Move Java source file if present in root
           if [ -f "HalloweenEventMod.java" ]; then
             mv HalloweenEventMod.java src/main/java/com/halloween/
           fi
 
-          # Move Config files if present in root
           if [ -f "fabric.mod.json" ]; then
             mv fabric.mod.json src/main/resources/
           fi
@@ -44,11 +46,8 @@ jobs:
             mv spooky_music.ogg src/main/resources/assets/halloween/sounds/
           fi
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-
-      - name: Build Mod with Gradle
-        run: gradle build
+      - name: Build Mod with Gradle Wrapper
+        run: ./gradlew build
 
       - name: Upload Mod Jar Artifact
         uses: actions/upload-artifact@v4
