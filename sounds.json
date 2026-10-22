@@ -1,0 +1,8 @@
+{
+  "spooky_music": {
+    "category": "music",
+    "sounds": [
+      "halloween:spooky_music"
+    ]
+  }
+}

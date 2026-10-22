@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "halloween",
+  "version": "1.0.0",
+  "name": "Halloween Event Mod",
+  "description": "Displays a countdown to Sunday at 12:00 PM and loops spooky music.",
+  "authors": ["NotaZombieMC"],
+  "contact": {},
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.halloween.HalloweenEventMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.14.0",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": "*"
+  }
+}
