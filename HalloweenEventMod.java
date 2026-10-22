@@ -5,7 +5,6 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
-import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.client.sound.SoundInstance;
 import net.minecraft.sound.SoundEvent;
@@ -25,7 +24,6 @@ public class HalloweenEventMod implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        // Render Top-Center Countdown
         HudRenderCallback.EVENT.register((drawContext, tickDelta) -> {
             MinecraftClient client = MinecraftClient.getInstance();
             if (client == null || client.world == null) return;
@@ -46,7 +44,7 @@ public class HalloweenEventMod implements ClientModInitializer {
 
             String text = String.format("§6§lHalloween Event in: §e%dd %02dh %02dm %02ds", days, hours, minutes, seconds);
 
-            TextRenderer textRenderer = textRenderer = client.textRenderer;
+            TextRenderer textRenderer = client.textRenderer;
             int screenWidth = client.getWindow().getScaledWidth();
             int textWidth = textRenderer.getWidth(text);
 
@@ -56,7 +54,6 @@ public class HalloweenEventMod implements ClientModInitializer {
             drawContext.drawTextWithShadow(textRenderer, text, x, y, 0xFFFFFF);
         });
 
-        // Loop Spooky Music
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.world == null) return;
 
